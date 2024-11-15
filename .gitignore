@@ -1,0 +1,4 @@
+*.tar
+*.pem
+gitlab-runner-linux-amd64
+builds
