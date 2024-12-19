@@ -69,7 +69,7 @@ All-in-one контейнер является контейнером, кото�
 Для начала, следует запустить процесс выгрузки образа, образ является весьма объёмным (ок. 3GB).
 
 ```bash
-docker pull gitlab.bmstu.ru:5050/devops-dataops-intro/labs/lab-4-gitlab/gitlab-ce:17.4.4-ce.0
+docker pull gitlab/gitlab-ce:17.4.4-ce.0
 ```
 
 🚨 В случае доступности tar архива образа, его можно импортировать при помощи команды:
@@ -90,7 +90,7 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3
 ```yaml
 services:
   gitlab:
-    image: gitlab.bmstu.ru:5050/devops-dataops-intro/labs/lab-4-gitlab/gitlab-ce:17.4.4-ce.0
+    image: gitlab/gitlab-ce:17.4.4-ce.0
     ports:
       - mode: host
         protocol:  tcp
@@ -308,7 +308,7 @@ git checkout -b dockerization
 И создадим `Dockerfile`:
 
 ```Dockerfile
-FROM gitlab.bmstu.ru:5050/devops-dataops-intro/labs/lab-4-gitlab/alpine:3.20
+FROM alpine:3.20
 
 COPY script.sh /
 RUN  chmod +x /script.sh
@@ -382,7 +382,7 @@ Gitlab CI скрипты выполняются при помощи исполн
 Для начала работы скачаем исполняемый файл Gitlab Runner:
 
 ```bash
-curl -O https://gitlab.bmstu.ru/api/v4/projects/825/packages/generic/gitlab-runner/17.5.3/gitlab-runner-linux-amd64
+curl -O https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v17.5.4/downloads/binaries/gitlab-runner-linux-amd64
 
 chmod +x gitlab-runner-linux-amd64
 
